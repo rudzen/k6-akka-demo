@@ -1,0 +1,35 @@
+<Project>
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <LangVersion>12</LangVersion>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <IsPackable>false</IsPackable>
+        <Copyright>(C) 2024</Copyright>
+        <Authors>rudzen</Authors>
+        <TieredPGO>true</TieredPGO>
+    </PropertyGroup>
+
+    <PropertyGroup Label="Configure Warnings">
+        <WarningLevel>5</WarningLevel>
+        <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+        <CodeAnalysisTreatWarningsAsErrors>false</CodeAnalysisTreatWarningsAsErrors>
+        <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+        <AnalysisMode>Recommended</AnalysisMode> <!-- Enable all CAxxx code quality rules -->
+        <NoWarn>$(NoWarn);S103;S109;S1200;S2219;S3925</NoWarn>
+    </PropertyGroup>
+
+    <PropertyGroup Label="Disabled Warnings">
+        <!-- CA5351: Do not use insecure cryptographic algorithms -->
+        <NoWarn>$(NoWarn);CA5351</NoWarn>
+
+        <!-- CA1848: Use the LoggerMessage delegates -->
+        <NoWarn>$(NoWarn);CA1848</NoWarn>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+        <DebugSymbols>false</DebugSymbols>
+        <DebugType>None</DebugType>
+    </PropertyGroup>
+
+</Project>

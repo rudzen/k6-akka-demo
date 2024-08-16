@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoApp", "DemoApp\DemoApp.csproj", "{EF8034C0-225D-42F7-B102-ADAB7FB96BF9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3AE008C3-04FF-41DE-828E-2E536AEACC7B}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.yml = docker-compose.yml
+		Directory.Build.props = Directory.Build.props
+		Directory.Packages.props = Directory.Packages.props
+		..\LICENSE = ..\LICENSE
+		..\README.md = ..\README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "k6", "k6", "{DEDEC471-6E3B-43CC-A905-8C386CA5C054}"
+	ProjectSection(SolutionItems) = preProject
+		..\k6\simple.js = ..\k6\simple.js
+		..\k6\tunneled.js = ..\k6\tunneled.js
+		..\k6\smallest-mail-box.js = ..\k6\smallest-mail-box.js
+		..\k6\tunneled-delay.js = ..\k6\tunneled-delay.js
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoApp.Domains.Demo", "DemoApp.Domains.Demo\DemoApp.Domains.Demo.csproj", "{FC79073B-D1B5-48A9-9E16-42A3D8268EC1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EF8034C0-225D-42F7-B102-ADAB7FB96BF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF8034C0-225D-42F7-B102-ADAB7FB96BF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF8034C0-225D-42F7-B102-ADAB7FB96BF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF8034C0-225D-42F7-B102-ADAB7FB96BF9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC79073B-D1B5-48A9-9E16-42A3D8268EC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC79073B-D1B5-48A9-9E16-42A3D8268EC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC79073B-D1B5-48A9-9E16-42A3D8268EC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC79073B-D1B5-48A9-9E16-42A3D8268EC1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DEDEC471-6E3B-43CC-A905-8C386CA5C054} = {3AE008C3-04FF-41DE-828E-2E536AEACC7B}
+	EndGlobalSection
+EndGlobal

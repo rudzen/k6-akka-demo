@@ -1,0 +1,10 @@
+﻿name: k6-demo-app
+services:
+  demoapp:
+    image: demoapp
+    build:
+      context: .
+      dockerfile: DemoApp/Dockerfile
+    ports:
+      - "8080:8080"
+      - "8081:8081"
