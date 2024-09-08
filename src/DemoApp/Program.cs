@@ -8,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddAkka("demo-app", (akkaConfigurationBuilder, sp) =>
+builder.Services.AddAkka("demo-app", (akkaConfigurationBuilder, _) =>
 {
     akkaConfigurationBuilder.RegisterAkkaActors();
 });

@@ -3,9 +3,9 @@ using DemoApp.Domains.Demo.Messages;
 
 namespace DemoApp.Domains.Demo.Actors;
 
-public sealed class SmallestMailBox : ReceiveActor
+public sealed class SmallestMailBoxActor : ReceiveActor
 {
-    public SmallestMailBox()
+    public SmallestMailBoxActor()
     {
         Receive<SmallestMailBoxEvents.SmalledMailBoxMessage>(_ =>
         {
