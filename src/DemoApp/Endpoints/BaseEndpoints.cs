@@ -10,7 +10,7 @@ namespace DemoApp.Endpoints;
 
 public static class BaseEndpoints
 {
-    private sealed record class DateTimeResponse(DateTime DateTime);
+    private sealed record DateTimeResponse(DateTime DateTime);
 
     public static void MapDateReturnEndpoints(this IEndpointRouteBuilder app)
     {
@@ -22,6 +22,16 @@ public static class BaseEndpoints
                          return Task.FromResult<Results<Ok<DateTimeResponse>, NotFound>>(TypedResults.Ok(new DateTimeResponse(now)));
                      })
                      .WithName("BaseTimeStampReturn")
+                     .WithOpenApi();
+
+        // aggregate
+        dateTimeFetch.MapGet("/aggregate/{count}", async (int count, [FromServices] IRequiredActor<AggregatorMainActor> reqActor) =>
+                     {
+                         var actor = await reqActor.GetAsync();
+                         var responseContent = await actor.Ask<AggregatorMessageEvents.AggregateResponse>(new AggregatorMessageEvents.AggregateRequest(count));
+                         return TypedResults.Ok(responseContent);
+                     })
+                     .WithName("BaseTimeStampAggregation")
                      .WithOpenApi();
 
         dateTimeFetch.MapGet("/tunnel", async ([FromServices] IRequiredActor<TunnelActor> reqActor) =>
@@ -42,7 +52,7 @@ public static class BaseEndpoints
                      .WithName("BaseTimeStampTunnelingDelayed")
                      .WithOpenApi();
 
-        dateTimeFetch.MapGet("/smallest-mail-box", async ([FromServices] IRequiredActor<SmallestMailBox> reqActor) =>
+        dateTimeFetch.MapGet("/smallest-mail-box", async ([FromServices] IRequiredActor<SmallestMailBoxActor> reqActor) =>
                      {
                          var actor = await reqActor.GetAsync();
                          var responseContent = await actor.Ask<SmallestMailBoxEvents.SmallesMailBoxResponse>(new SmallestMailBoxEvents.SmalledMailBoxMessage());
