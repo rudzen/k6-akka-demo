@@ -1,13 +1,14 @@
-﻿FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
+﻿FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS base
 USER $APP_UID
 WORKDIR /app
 EXPOSE 8080
 EXPOSE 8081
 
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["DemoApp/DemoApp.csproj", "DemoApp/"]
+COPY ["DemoApp.Domains.Demo/DemoApp.Domains.Demo.csproj", "DemoApp.Domains.Demo/"]
 RUN dotnet restore "DemoApp/DemoApp.csproj"
 COPY . .
 WORKDIR "/src/DemoApp"

@@ -16,9 +16,16 @@ public sealed class AggregatorFinalizerActor : ReceiveActor
     private void FinalizeResult(AggregatorMessageEvents.AggregateFinalize finalize)
     {
         // do some work on the incoming data
-        var s = new string[finalize.Results.Count];
-        for (var i = 0; i < finalize.Results.Count; i++)
-            s[i] = finalize.Results[i].ToString("O");
-        finalize.Origin.Tell(new AggregatorMessageEvents.AggregateResponse(s), Sender);
+        if (finalize.Results.Count == 1)
+        {
+            finalize.Origin.Tell(new AggregatorMessageEvents.AggregateResponse([finalize.Results[0].ToString("O")]), Sender);
+        }
+        else
+        {
+            var s = new string[finalize.Results.Count];
+            for (var i = 0; i < finalize.Results.Count; i++)
+                s[i] = finalize.Results[i].ToString("O");
+            finalize.Origin.Tell(new AggregatorMessageEvents.AggregateResponse(s), Sender);
+        }
     }
 }
